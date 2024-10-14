@@ -3,69 +3,19 @@
     <h1>Electronic Voting System</h1>
   </header>
 
-  <!-- User Login Section -->
-  <section class="user-login">
-    <h2>User Login</h2>
-    <form (ngSubmit)="onUserLogin()">
-      <label for="userEmail">Email:</label>
-      <input type="email" id="userEmail" [(ngModel)]="userEmail" name="userEmail" required />
+  <!-- Navigation Section -->
+  <nav>
+    <button (click)="showSection('login')">User Login</button>
+    <button (click)="showSection('register')">User Registration</button>
+    <button (click)="showSection('adminLogin')">Admin Login</button>
+    <button (click)="showSection('voting')">Voting Panel</button>
+    <button (click)="showSection('results')">View Results</button>
+  </nav>
 
-      <label for="userPassword">Password:</label>
-      <input type="password" id="userPassword" [(ngModel)]="userPassword" name="userPassword" required />
-
-      <button type="submit">Login</button>
-    </form>
-  </section>
-
-  <!-- User Registration Section -->
-  <section class="user-registration">
-    <h2>User Registration</h2>
-    <form (ngSubmit)="onUserRegister()">
-      <label for="regName">Name:</label>
-      <input type="text" id="regName" [(ngModel)]="regName" name="regName" required />
-
-      <label for="regEmail">Email:</label>
-      <input type="email" id="regEmail" [(ngModel)]="regEmail" name="regEmail" required />
-
-      <label for="regPassword">Password:</label>
-      <input type="password" id="regPassword" [(ngModel)]="regPassword" name="regPassword" required />
-
-      <button type="submit">Register</button>
-    </form>
-  </section>
-
-  <!-- Admin Login Section -->
-  <section class="admin-login">
-    <h2>Admin Login</h2>
-    <form (ngSubmit)="onAdminLogin()">
-      <label for="adminUsername">Username:</label>
-      <input type="text" id="adminUsername" [(ngModel)]="adminUsername" name="adminUsername" required />
-
-      <label for="adminPassword">Password:</label>
-      <input type="password" id="adminPassword" [(ngModel)]="adminPassword" name="adminPassword" required />
-
-      <button type="submit">Admin Login</button>
-    </form>
-  </section>
-
-  <!-- Voting Panel -->
-  <section *ngIf="isUserLoggedIn" class="voting-panel">
-    <h2>Voting Panel</h2>
-    <h3>Choose your candidate:</h3>
-    <div *ngFor="let candidate of candidates">
-      <label>
-        <input type="radio" name="candidate" [(ngModel)]="selectedCandidate" [value]="candidate.id" />
-        {{ candidate.name }}
-      </label>
-    </div>
-    <button (click)="submitVote()">Submit Vote</button>
-  </section>
-
-  <!-- Result Display -->
-  <section *ngIf="isAdminLoggedIn" class="result-display">
-    <h2>Results</h2>
-    <div *ngFor="let candidate of candidates">
-      <p>{{ candidate.name }}: {{ candidate.votes }} votes</p>
-    </div>
-  </section>
+  <app-login *ngIf="currentSection === 'login'"></app-login>
+  <app-register *ngIf="currentSection === 'register'"></app-register>
+  <app-admin-panel *ngIf="currentSection === 'adminLogin'"></app-admin-panel>
+  <app-voting-panel *ngIf="currentSection === 'voting' && isUserLoggedIn"></app-voting-panel>
+  <app-results *ngIf="currentSection === 'results' && isAdmin"></app-results>
+  
 </div>

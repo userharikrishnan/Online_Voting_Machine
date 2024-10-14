@@ -57,4 +57,5 @@ class AuthController extends Controller
         
             return response()->json(['message' => 'User not authenticated.'], 401);
         }
+        
 }

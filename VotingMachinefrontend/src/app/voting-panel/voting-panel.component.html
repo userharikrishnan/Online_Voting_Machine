@@ -1,7 +1,9 @@
-<ul>
-    <li *ngFor="let candidate of candidates">
-      {{ candidate.name }}
-      <button (click)="vote(candidate.id)">Vote</button>
-    </li>
-  </ul>
-  
+<h2>Voting Panel</h2>
+<h3>Choose your candidate:</h3>
+<div *ngFor="let candidate of candidates">
+  <label>
+    <input type="radio" name="candidate-{{candidate.id}}" [(ngModel)]="selectedCandidate" [value]="candidate.id" />
+    {{ candidate.name }}
+  </label>
+</div>
+<button (click)="submitVote()">Submit Vote</button>

@@ -7,7 +7,7 @@ import { AdminService } from '../../services/admin.service';
 })
 export class AdminPanelComponent {
   newCandidateName = '';
-  candidates: any[] = []; // Specify type for candidates
+  candidates: any[] = []; 
 
   constructor(private adminService: AdminService) {
     this.refreshCandidates();

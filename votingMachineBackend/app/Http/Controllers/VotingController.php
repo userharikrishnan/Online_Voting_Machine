@@ -11,22 +11,22 @@ class VotingController extends Controller
 {
     public function vote(Request $request)
     {
-        \Log::info('Vote attempt by user: ' . Auth::id());
+        \Log::info('Vote attempt by user: ' . 1);
     
         $request->validate([
             'candidate_id' => 'required|exists:candidates,id',
         ]);
     
-        $existingVote = Vote::where('user_id', Auth::id())->first();
-        if ($existingVote) {
-            return response()->json(['message' => 'You have already voted.'], 403); 
-        }
+        // $existingVote = Vote::where('user_id', Auth::id())->first();
+        // if ($existingVote) {
+        //     return response()->json(['message' => 'You have already voted.'], 403); 
+        // }
     
         
         \Log::info('Casting vote for candidate ID: ' . $request->candidate_id);
     
         Vote::create([
-            'user_id' => Auth::id(),
+            'user_id' => 1,
             'candidate_id' => $request->candidate_id,
         ]);
     

@@ -1,8 +1,10 @@
-<input [(ngModel)]="newCandidateName" placeholder="New Candidate Name" />
-<button (click)="addCandidate()">Add Candidate</button>
-<ul>
-  <li *ngFor="let candidate of candidates">
-    {{ candidate.name }}
-    <button (click)="deleteCandidate(candidate.id)">Delete</button>
-  </li>
-</ul>
+<h2>Admin Login</h2>
+<form (ngSubmit)="onAdminLogin()">
+  <label for="adminUsername">Username:</label>
+  <input type="text" id="adminUsername" [(ngModel)]="adminUsername" name="adminUsername" required />
+
+  <label for="adminPassword">Password:</label>
+  <input type="password" id="adminPassword" [(ngModel)]="adminPassword" name="adminPassword" required />
+
+  <button type="submit">Admin Login</button>
+</form>
