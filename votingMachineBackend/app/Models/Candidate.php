@@ -9,4 +9,10 @@ class Candidate extends Model
 {
 
     use HasFactory;
+
+    public function votes()
+    {
+    return $this->hasMany(Vote::class);
+    }
+
 }

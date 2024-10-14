@@ -1,6 +1,19 @@
+import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { provideHttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+
+enableProdMode();
+
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(),
+    FormsModule, 
+    CommonModule, 
+  ]
+})
+.catch(err => console.error(err));

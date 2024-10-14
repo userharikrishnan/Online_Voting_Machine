@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let candidate of candidates">
+      {{ candidate.name }}
+      <button (click)="vote(candidate.id)">Vote</button>
+    </li>
+  </ul>
+  
